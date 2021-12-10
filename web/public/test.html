@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+html {
+  height: 100%;
+}
+html, body, .PageContainer {
+  display: flex;
+  flex-grow: 1;
+}
+.MainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.ColContainer {
+  overflow-y: hidden;
+  display: flex;
+  align-items: stretch;
+}
+.ColA {
+  background-color:blueviolet;
+  overflow-y: hidden;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.ColB {
+  flex-grow: 1;
+  background-color:cornflowerblue;
+}
+    </style>
+  </head>
+  <body>
+    <div class="MainContainer">
+      <div style="overflow: scroll; display: block; background-color: #bcd; flex: 0 0 auto; height: 50px">
+        header
+      </div>
+      <div class="PageContainer">
+        <div class="ColContainer">
+          <!--
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+          -->
+          <div class="ColA">
+            <div style="overflow-y: auto;">
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+            <div>sfdsds</div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-color: #cdb">
+        footer
+      </div>
+    <div>
+  </div>
+  </body>
+</html>
