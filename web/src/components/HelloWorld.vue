@@ -1,46 +1,125 @@
 <template>
-  <v-container fluid fill-height class="pa-0" style="align-items: stretch">
-    <v-row class="text-center" no-gutters style="">
-      <v-col cols="3" class="text-left" style="background-color: #abc">
-        <SelectableCol></SelectableCol>
-      </v-col>
-
-      <v-col cols="4" class="text-left" style="background-color: #cba">
-        <WorkingCol></WorkingCol>
-      </v-col>
-      <v-col cols="5" style="">
-        <v-toolbar flat dense style="background-color: transparent">
-          <span>YAML</span>
-          <v-spacer></v-spacer>
-          <v-btn small fab href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </v-toolbar>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="BigContainer">
+    <div class="Col1">
+      <SelectableCol></SelectableCol>
+    </div>
+    <div class="Col2">
+      <WorkingCol :onSelectCell="onSelectCell"></WorkingCol>
+    </div>
+    <div class="Col3">
+      <div class="ColContainer">
+        <div id="content">
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+          <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+            <p>Dynamic size with scrollbar</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
+.BigContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row !important; 
+}
+
 .FlexContainer {
   display: flex;
   overflow: hidden;
   flex: 1 1 auto;
   flex-direction: column;
 }
+
+.ColContainer {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.Col1 {
+  flex-grow: 2;
+}
+.Col2 {
+  flex-grow: 3;
+}
+.Col3 {
+  flex-grow: 7;
+}
+#head {
+    border: green solid 1px;
+    flex-shrink: 0;
+}
+
+#content{
+    border: red solid 1px;
+    overflow-y: auto;
+    /*height: 100%;*/
+}
+
+#foot {
+    border: blue solid 1px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
 </style>
 
 <script>
 import SelectableCol from '@/components/SelectableCol'
 import WorkingCol from '@/components/WorkingCol'
 
-  export default {
-    name: 'HelloWorld',
-    components: {
-      SelectableCol,
-      WorkingCol,
-    },
-    data: () => ({
-    }),
+export default {
+  name: 'HelloWorld',
+  components: {
+    SelectableCol,
+    WorkingCol,
+  },
+  data: () => ({
+  }),
+  mounted() {
+    this.$store.commit('SelectedCell', {
+      meta: {
+        name: 'Root',
+        group: 'root',
+      }
+    })
+  },
+  methods: {
+    onSelectCell(cell) {
+      console.log('HelloWorld: onSelectCell')
+      console.log(cell)
+    }
   }
+}
 </script>

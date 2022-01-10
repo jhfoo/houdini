@@ -1,19 +1,22 @@
 <template>
-  <draggable v-model="children" :group="DraggableGroup" @change="onDragIn" :sort="false">
-    <v-list-item v-for="(item, idx) in children" :key="idx">
+  <div>
+    <v-list-item @click="onSelectCell()">
       <v-list-item-icon>
         <v-icon>mdi-drag</v-icon>
       </v-list-item-icon>
 
       <v-list-item-content>
-        <v-list-item-title v-text="item.name"></v-list-item-title>
+        <v-list-item-title v-text="cell.meta.name"></v-list-item-title>
       </v-list-item-content>
 
       <v-list-item-icon>
-        <v-icon>mdi-delete</v-icon>
+          <v-icon @click="ParentProxy.deleteChild(ChildIndex)">mdi-delete</v-icon>
       </v-list-item-icon>
     </v-list-item>
-  </draggable>
+    <draggable v-model="cell.data.children" group="root" @change="onDragIn" :sort="false">
+      <WorkingCell v-for="(child, idx) in cell.data.children" :key="idx" :cell="child" :ParentProxy="MyParentProxy" :ChildIndex="idx"></WorkingCell>
+    </draggable>
+  </div>
 </template>
 
 <script>
@@ -24,19 +27,24 @@ import draggable from 'vuedraggable'
     components: {
       draggable,
     },
-    props: ['GroupName', 'ParentChildrenProxy'],
+    props: ['cell', 'ParentProxy', 'ChildIndex'],
     data: () => ({
       EditableItems: [],
     }),
     computed: {
-      children: {
-        get() {
-          return this.ParentChildrenProxy.get()
-        },
-        set(NewValue) {
-          this.ParentChildrenProxy.set(NewValue)
+      MyParentProxy() {
+        return {
+          deleteChild: this.deleteChild,
         }
       },
+      // children: {
+      //   get() {
+      //     return this.ParentChildrenProxy.get()
+      //   },
+      //   set(NewValue) {
+      //     this.ParentChildrenProxy.set(NewValue)
+      //   }
+      // },
       DraggableGroup() {
         return {
           name: this.GroupName,
@@ -46,10 +54,23 @@ import draggable from 'vuedraggable'
       }
     },
     methods: {
+      onSelectCell() {
+        console.log(`New ParentGroup: ${this.cell.meta.ParentGroup}`)
+        this.$store.commit('SelectedCell', this.cell)
+      },
+      deleteChild(idx) {
+        console.log(`Splice: ${idx}`)
+        this.cell.data.children.splice(idx,1)
+        console.log(this.cell.data.children)
+      },
       onDragIn(evt) {
         console.log('Something got added')
         console.log(evt)
-        this.ParentChildrenProxy.sort()
+
+        // sort children
+        this.cell.data.children.sort((a, b) => {
+          return a.meta.order - b.meta.order
+        })
       }
     }
   }
