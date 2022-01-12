@@ -7,6 +7,8 @@
       <WorkingCol :onSelectCell="onSelectCell"></WorkingCol>
     </div>
     <div class="Col3">
+      <CellEditorCol></CellEditorCol>
+      <!--
       <div class="ColContainer">
         <div id="content">
           <p>Dynamic size with scrollbar</p>
@@ -43,6 +45,7 @@
             <p>Dynamic size with scrollbar</p>
         </div>
       </div>
+      -->
     </div>
   </div>
 </template>
@@ -98,12 +101,14 @@
 <script>
 import SelectableCol from '@/components/SelectableCol'
 import WorkingCol from '@/components/WorkingCol'
+import CellEditorCol from '@/components/CellEditorCol'
 
 export default {
   name: 'HelloWorld',
   components: {
     SelectableCol,
     WorkingCol,
+    CellEditorCol,
   },
   data: () => ({
   }),

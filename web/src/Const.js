@@ -7,7 +7,7 @@ module.exports = {
       order: 2,
     },
     data: {
-
+      children: [],
     },
   }, {
     meta: {
@@ -35,14 +35,21 @@ module.exports = {
       properties: [
         {
           name: 'id',
-          type: 'string',
+          type: 'DynDropdown',
+          data: 'local@/data/sample.json:dropdowns.sites',
           isMandatory: true,
-        }
+        }, {
+          name: 'description',
+          type: 'string',
+          isMandatory: false,
+        },
       ],
       isMany: true,
     },
     data: {
       children: [],
+      id: '',
+      description: '',
     },
   }]
 }

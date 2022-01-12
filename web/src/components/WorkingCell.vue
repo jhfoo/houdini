@@ -13,7 +13,7 @@
           <v-icon @click="ParentProxy.deleteChild(ChildIndex)">mdi-delete</v-icon>
       </v-list-item-icon>
     </v-list-item>
-    <draggable v-model="cell.data.children" group="root" @change="onDragIn" :sort="false">
+    <draggable v-if="cell.data.children" v-model="cell.data.children" :group="cell.meta.group" @change="onDragIn" :sort="false">
       <WorkingCell v-for="(child, idx) in cell.data.children" :key="idx" :cell="child" :ParentProxy="MyParentProxy" :ChildIndex="idx"></WorkingCell>
     </draggable>
   </div>

@@ -60,7 +60,7 @@ import WorkingCell from '@/components/WorkingCell'
       },
     }),
     mounted() {
-      this.root.meta.ParentGroup = this.$store.getters.SelectedCell.meta.group
+      // this.root.meta.ParentGroup = this.$store.getters.SelectedCell.meta.group
     },
     methods: {
       getChildrenProxy() {

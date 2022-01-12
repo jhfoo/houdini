@@ -1,0 +1,10 @@
+{
+  "dropdowns": {
+    "sites": [{
+      "name": "IAD1",
+      "value": "IAD1"
+    }, {
+      "name": "ABC1"
+    }]
+  }
+}
